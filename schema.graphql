@@ -1,0 +1,44 @@
+"""
+Adding new filters - need to edit schema.graphql and SearchBar.js
+In this file:
+- add "filter_name: [[Option]]!" to OptionInput
+- add "filter_name: String!" to Result
+"""
+type Query {
+  searchTerm(term: String, options: OptionInput): [Result]
+  allResults: [Result]
+}
+
+input OptionInput {
+  category: [[Option]]!
+  subcategory: [[Option]]!
+}
+
+input Option {
+  id: ID!
+  text: String!
+}
+
+type Result {
+  name: String!
+  href: String!
+  category: String!
+  subcategory: String!
+}
+
+"""
+Mostly placeholders here because we are not implementing
+the full account funcationality yet
+"""
+type User {
+  isParent: Boolean
+  ageRange: Int
+  state: Int
+  transitionState: Int
+  IDEACategories: [Boolean]!
+  need: Boolean
+}
+
+type Mutation {
+  createDummy():String
+}
